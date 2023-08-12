@@ -168,7 +168,7 @@ public class PabellonDTOController extends GenericDTOController<Pabellon, Pabell
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Encuentra un pabellon por nombre")
+    @Operation(summary = "Encontrar pabellon por nombre")
     @PostMapping("/pabellones-nombre")
     public ResponseEntity<Map<String, Object>> findAllPabellonByNombre(@RequestParam String nombre){
        Map<String,Object> mensaje = new HashMap<>();

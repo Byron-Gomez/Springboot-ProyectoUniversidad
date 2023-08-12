@@ -162,7 +162,7 @@ public class ProfesorDTOController extends PersonaDTOController{
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Encuentra todos los profesores de una carrera")
+    @Operation(summary = "Encontrar todos los profesores de una carrera")
     @GetMapping("/profesores-carreras")
     public ResponseEntity<?> findProfesoresCarrera(@RequestBody String carrera){
 

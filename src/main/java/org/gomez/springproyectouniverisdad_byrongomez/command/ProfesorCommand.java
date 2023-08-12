@@ -23,6 +23,10 @@ public class ProfesorCommand implements CommandLineRunner {
         System.out.println("---------- ************* Profesor Command ********** --------");
         personaDAO.save(ObjetosDummy.getProfesorUno());
         personaDAO.save(ObjetosDummy.getProfesorDos());
+        personaDAO.save(ObjetosDummy.getProfesorTres());
+        personaDAO.save(ObjetosDummy.getProfesorCuatro());
+        personaDAO.save(ObjetosDummy.getProfesorCinco());
+
         System.out.println("----Busqueda todos los profesores ---");
         Iterable<Persona> profesores=((ProfesorDAO)personaDAO).findAll();
         profesores.forEach(System.out::println);

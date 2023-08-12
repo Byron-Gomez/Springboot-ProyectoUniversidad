@@ -29,11 +29,15 @@ public class AlumnoCommand implements CommandLineRunner {
         System.out.println("---------- ************* Alumnos Command ********** --------");
         ((AlumnoDAO)personaDAO).save(ObjetosDummy.getAlumnoUno());
         ((AlumnoDAO)personaDAO).save(ObjetosDummy.getAlumnoDos());
+        ((AlumnoDAO)personaDAO).save(ObjetosDummy.getAlumnoTres());
+        ((AlumnoDAO)personaDAO).save(ObjetosDummy.getAlumnoCuatro());
+        ((AlumnoDAO)personaDAO).save(ObjetosDummy.getAlumnoCinco());
+
 
         Iterable<Persona> alumnos=((AlumnoDAO)personaDAO).findAll();
         alumnos.forEach(System.out::println);
         System.out.println("Alumno ");
-        Persona alumno =personaDAO.findById(5).orElseThrow();
+        Persona alumno = personaDAO.findById(11).orElseThrow();
         System.out.println(alumno);
 
         Carrera carrera= carreraDAO.findById(1).orElseThrow();

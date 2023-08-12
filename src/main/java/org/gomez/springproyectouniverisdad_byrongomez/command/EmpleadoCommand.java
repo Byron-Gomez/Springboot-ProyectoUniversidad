@@ -23,6 +23,10 @@ public class EmpleadoCommand implements CommandLineRunner {
         System.out.println("---------- ************* Empleado Command ********** --------");
         personaDAO.save(ObjetosDummy.getEmpleadoUno());
         personaDAO.save(ObjetosDummy.getEmpleadoDos());
+        personaDAO.save(ObjetosDummy.getEmpleadoTres());
+        personaDAO.save(ObjetosDummy.getEmpleadoCuatro());
+        personaDAO.save(ObjetosDummy.getEmpleadoCinco());
+
         System.out.println("----Busqueda todos los Empleados ---");
         Iterable<Persona> empleados=((EmpleadoDAO)personaDAO).findAll();
         empleados.forEach(System.out::println);

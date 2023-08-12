@@ -46,7 +46,7 @@ public class AlumnoDTOController extends PersonaDTOController {
         this.carreraMapperMs = carreraMapperMs;
     }
 
-    @Operation(summary = "Obtiene todos los alumnos")
+    @Operation(summary = "Obtiene todos los alumnos de la lista")
     @GetMapping
     public ResponseEntity<?> findAllAlumnos(){
         Map<String, Object> mensaje = new HashMap<>();
@@ -150,7 +150,7 @@ public class AlumnoDTOController extends PersonaDTOController {
 
         if (personaDTO==null){
             mensaje.put("success",Boolean.FALSE);
-            mensaje.put("mensaje",String.format("No se encontro persona con nombre +%s y appelido %s",nombre,apellido));
+            mensaje.put("mensaje",String.format("No se encontro Alumno con nombre +%s y appelido %s",nombre,apellido));
             return ResponseEntity.badRequest().body(mensaje);
         }
         mensaje.put("datos",personaDTO);

@@ -20,6 +20,11 @@ public class AulaCommand implements CommandLineRunner {
         System.out.println("---------- ************* Aula Command ********** --------");
         aulaDAO.save(ObjetosDummy.getAula123());
         aulaDAO.save(ObjetosDummy.getAula451());
+        aulaDAO.save(ObjetosDummy.getAula789());
+        aulaDAO.save(ObjetosDummy.getAula567());
+        aulaDAO.save(ObjetosDummy.getAula231());
+
+
         System.out.println("--- buscar por numero aula ---");
         System.out.println(aulaDAO.findAulaByNroAula(ObjetosDummy.getAula123().getNroAula()));
 //        Pabellon pabellon=pabellonDAO.findById(1).orElseThrow();

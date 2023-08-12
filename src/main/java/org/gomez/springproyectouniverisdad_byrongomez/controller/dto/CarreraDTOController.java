@@ -38,7 +38,7 @@ public class CarreraDTOController extends GenericDTOController<Carrera,CarreraDA
         this.carreraMapper = carreraMapper;
     }
 
-    @Operation(summary = "Obtiene todos las carreras")
+    @Operation(summary = "Obtener todas las carreras")
     @GetMapping
     public ResponseEntity<?> findAllCarreras() {
         Map<String,Object> mensaje= new HashMap<>();
@@ -52,7 +52,7 @@ public class CarreraDTOController extends GenericDTOController<Carrera,CarreraDA
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Obtiene carrera por id")
+    @Operation(summary = "Obtener carrera por id")
     @GetMapping("/{id}")
     public ResponseEntity<?> findCarreraById(@PathVariable Integer id) {
         Map<String,Object> mensaje= new HashMap<>();
@@ -90,7 +90,7 @@ public class CarreraDTOController extends GenericDTOController<Carrera,CarreraDA
         return ResponseEntity.status(HttpStatus.CREATED).body(mensaje);
     }
 
-    @Operation(summary = "Modifica una carrera")
+    @Operation(summary = "Modificar una carrera")
     @PutMapping("/{id}")
     public ResponseEntity<?> updateCarrera(@PathVariable Integer id, @Valid @RequestBody CarreraDTO carreraDTO
             , BindingResult result){
@@ -123,7 +123,7 @@ public class CarreraDTOController extends GenericDTOController<Carrera,CarreraDA
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Borra una carrera ")
+    @Operation(summary = "Borrar una carrera por id ")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCarrera(@PathVariable Integer id){
 
@@ -142,14 +142,14 @@ public class CarreraDTOController extends GenericDTOController<Carrera,CarreraDA
         return ResponseEntity.status(HttpStatus.OK).body(mensaje);
     }
 
-    @Operation(summary = "Encuentra todos las carreras por nombre")
+    @Operation(summary = "Encontrar todas las carreras por nombre")
     @PostMapping("/find-carreras")
     public ResponseEntity<?> findCarreraByNombreContains(@RequestParam String carrera){
         Map<String,Object> mensaje = new HashMap<>();
         List<Carrera> carreras = (List<Carrera>) service.findCarreraByNombreContains(carrera);
         if (carreras.isEmpty()){
            mensaje.put("success",Boolean.TRUE);
-           mensaje.put("mensaje", String.format("No existe %s : con nombre %s || El nombre de la carrera debe ser exacto ",nombre_entidad,carrera));
+           mensaje.put("mensaje", String.format("No existe %s : con nombre %s || El nombre de la carrera debe ser exacto con mayusculas y minusculas y espacio ",nombre_entidad,carrera));
            return ResponseEntity.badRequest().body(mensaje);
         }
         List<CarreraDTO> dtos = carreras.stream()
@@ -160,7 +160,7 @@ public class CarreraDTOController extends GenericDTOController<Carrera,CarreraDA
         return ResponseEntity.status(HttpStatus.OK).body(mensaje);
     }
 
-    @Operation(summary = "Encuentra todos las carreras por nombre")
+    @Operation(summary = "Encuentrar todos las carreras por nombre")
     @PostMapping("/find-carreras/ignorecase")
     public ResponseEntity<?> findCarreraByNombreContainsIgnoreCase(@RequestParam String carrera){
         Map<String,Object> mensaje = new HashMap<>();
@@ -178,7 +178,7 @@ public class CarreraDTOController extends GenericDTOController<Carrera,CarreraDA
         return ResponseEntity.status(HttpStatus.OK).body(mensaje);
     }
 
-    @Operation(summary = "Encuentra todos las carreras por cantidad de años")
+    @Operation(summary = "Encuentrar todas las carreras por cantidad de años")
     @PostMapping("/find-carreras/anios/{anios}")
     public ResponseEntity<?> findCarreraByCantidadAniosAfter(@PathVariable Integer anios){
         Map<String,Object> mensaje = new HashMap<>();

@@ -22,6 +22,10 @@ public class PabellonCommand implements CommandLineRunner {
         System.out.println("---------- ************* Alumnos Command ********** --------");
         pabellonDAO.save(ObjetosDummy.getPabellonUno());
         pabellonDAO.save(ObjetosDummy.getPabellonDos());
+        pabellonDAO.save(ObjetosDummy.getPabellonTres());
+        pabellonDAO.save(ObjetosDummy.getPabellonCuatro());
+        pabellonDAO.save(ObjetosDummy.getPabellonCinco());
+
 
         System.out.println("----Pabellones---");
         Iterable<Pabellon> pabellones= pabellonDAO.findAll();
