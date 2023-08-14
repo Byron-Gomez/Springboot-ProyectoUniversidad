@@ -1,6 +1,7 @@
 package org.gomez.springproyectouniverisdad_byrongomez.controller.dto;
 
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import java.util.Map;
 
 public class PrimerRestController {
     @GetMapping("/hola-mundo")
+    @Operation(summary = "Metodo de prueba de RestApi")
     public ResponseEntity<Map<String,String>> holaMundo(){
         Map<String,String>  mensaje = new HashMap<>();
         mensaje.put("Saludo","Hola mundo! =D");

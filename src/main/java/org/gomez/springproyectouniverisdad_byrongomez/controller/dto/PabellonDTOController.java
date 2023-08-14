@@ -40,7 +40,7 @@ public class PabellonDTOController extends GenericDTOController<Pabellon, Pabell
         this.aulaDAO = aulaDAO;
     }
 
-    @Operation(summary = "Obtiene todos los pabellones")
+    @Operation(summary = "Obtener toda la lista de Pabellones")
     @GetMapping
     public ResponseEntity<?> findAllPabellones(){
         Map<String, Object> mensaje = new HashMap<>();
@@ -54,7 +54,7 @@ public class PabellonDTOController extends GenericDTOController<Pabellon, Pabell
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Obtiene el pabellon por id")
+    @Operation(summary = "buscar el Pabellon por su id")
     @GetMapping("/{id}")
     public ResponseEntity<?> findPabellonId(@PathVariable Integer id) {
 
@@ -77,7 +77,7 @@ public class PabellonDTOController extends GenericDTOController<Pabellon, Pabell
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Crea un pabellon")
+    @Operation(summary = "Crear un Pabellon")
     @PostMapping
     public ResponseEntity<?> createPabellon(@Valid @RequestBody PabellonDTO pabellonDTO, BindingResult result){
 
@@ -96,7 +96,7 @@ public class PabellonDTOController extends GenericDTOController<Pabellon, Pabell
         return ResponseEntity.status(HttpStatus.CREATED).body(mensaje);
     }
 
-    @Operation(summary = "Modifica un pabellon")
+    @Operation(summary = "Actualizar datos de un pabellon por su id")
     @PutMapping("/{id}")
     public ResponseEntity<?> updatePabellon(@PathVariable Integer id,
                                             @Valid @RequestBody PabellonDTO pabellonDTO,BindingResult result){
@@ -130,7 +130,7 @@ public class PabellonDTOController extends GenericDTOController<Pabellon, Pabell
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Borra un pabellon ")
+    @Operation(summary = "Eliminar un Pabellon por su id")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletePabellonId(@PathVariable Integer id){
 
@@ -149,7 +149,7 @@ public class PabellonDTOController extends GenericDTOController<Pabellon, Pabell
         return ResponseEntity.status(HttpStatus.OK).body(mensaje);
     }
 
-    @Operation(summary = "Encuentra un pabellon por lugar")
+    @Operation(summary = "Buscar todos los Pabellones por su Localidad")
     @PostMapping("/pabellones-localidad")
     public ResponseEntity<?> findAllPabellonByLocalidad(@RequestParam String localidad){
         Map<String,Object> mensaje = new HashMap<>();
@@ -168,7 +168,7 @@ public class PabellonDTOController extends GenericDTOController<Pabellon, Pabell
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Encontrar pabellon por nombre")
+    @Operation(summary = "Buscar todos los Pabellones por su Localidad")
     @PostMapping("/pabellones-nombre")
     public ResponseEntity<Map<String, Object>> findAllPabellonByNombre(@RequestParam String nombre){
        Map<String,Object> mensaje = new HashMap<>();

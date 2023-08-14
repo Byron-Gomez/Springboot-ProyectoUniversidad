@@ -38,7 +38,7 @@ public class CarreraDTOController extends GenericDTOController<Carrera,CarreraDA
         this.carreraMapper = carreraMapper;
     }
 
-    @Operation(summary = "Obtener todas las carreras")
+    @Operation(summary = "Obtener toda la lista de Carreras")
     @GetMapping
     public ResponseEntity<?> findAllCarreras() {
         Map<String,Object> mensaje= new HashMap<>();
@@ -52,7 +52,7 @@ public class CarreraDTOController extends GenericDTOController<Carrera,CarreraDA
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Obtener carrera por id")
+    @Operation(summary = "Buscar la Carrera por su id")
     @GetMapping("/{id}")
     public ResponseEntity<?> findCarreraById(@PathVariable Integer id) {
         Map<String,Object> mensaje= new HashMap<>();
@@ -73,7 +73,7 @@ public class CarreraDTOController extends GenericDTOController<Carrera,CarreraDA
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Crea una carrera")
+    @Operation(summary = "Crea una Carrera")
     @PostMapping
     public ResponseEntity<?> createCarrera( @Valid @RequestBody CarreraDTO carreraDTO,BindingResult result ) {
         Map<String,Object> mensaje = new HashMap<>();
@@ -90,7 +90,7 @@ public class CarreraDTOController extends GenericDTOController<Carrera,CarreraDA
         return ResponseEntity.status(HttpStatus.CREATED).body(mensaje);
     }
 
-    @Operation(summary = "Modificar una carrera")
+    @Operation(summary = "Actualizar datos de una Carrera por su id")
     @PutMapping("/{id}")
     public ResponseEntity<?> updateCarrera(@PathVariable Integer id, @Valid @RequestBody CarreraDTO carreraDTO
             , BindingResult result){
@@ -123,7 +123,7 @@ public class CarreraDTOController extends GenericDTOController<Carrera,CarreraDA
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Borrar una carrera por id ")
+    @Operation(summary = "Eliminar una Carrera por su id")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCarrera(@PathVariable Integer id){
 
@@ -142,7 +142,7 @@ public class CarreraDTOController extends GenericDTOController<Carrera,CarreraDA
         return ResponseEntity.status(HttpStatus.OK).body(mensaje);
     }
 
-    @Operation(summary = "Encontrar todas las carreras por nombre")
+    @Operation(summary = "Buscar Carrera por su Nombre")
     @PostMapping("/find-carreras")
     public ResponseEntity<?> findCarreraByNombreContains(@RequestParam String carrera){
         Map<String,Object> mensaje = new HashMap<>();
@@ -160,7 +160,7 @@ public class CarreraDTOController extends GenericDTOController<Carrera,CarreraDA
         return ResponseEntity.status(HttpStatus.OK).body(mensaje);
     }
 
-    @Operation(summary = "Encuentrar todos las carreras por nombre")
+    @Operation(summary = "Buscar Carrera por su Nombre")
     @PostMapping("/find-carreras/ignorecase")
     public ResponseEntity<?> findCarreraByNombreContainsIgnoreCase(@RequestParam String carrera){
         Map<String,Object> mensaje = new HashMap<>();
@@ -178,7 +178,7 @@ public class CarreraDTOController extends GenericDTOController<Carrera,CarreraDA
         return ResponseEntity.status(HttpStatus.OK).body(mensaje);
     }
 
-    @Operation(summary = "Encuentrar todas las carreras por cantidad de años")
+    @Operation(summary = "Buscar Carrera por su cantidad de Años")
     @PostMapping("/find-carreras/anios/{anios}")
     public ResponseEntity<?> findCarreraByCantidadAniosAfter(@PathVariable Integer anios){
         Map<String,Object> mensaje = new HashMap<>();
@@ -196,7 +196,7 @@ public class CarreraDTOController extends GenericDTOController<Carrera,CarreraDA
         return ResponseEntity.status(HttpStatus.OK).body(mensaje);
     }
 
-    @Operation(summary = "Encuentra todas las carreras por nombre y apellido del profesor")
+    @Operation(summary = "Buscar Carrera por Nombre y Apellido de un Profesor")
     @GetMapping("profesor-carreras/{nombre}/{apellido}")
     public ResponseEntity<Map<String, Object>> findCarrerasProfesorNombreApellido(@PathVariable String nombre,
                                                                                   @PathVariable String apellido){

@@ -41,7 +41,7 @@ public class ProfesorDTOController extends PersonaDTOController{
         this.carreraMapperMs = carreraMapperMs;
     }
 
-    @Operation(summary = "Obtiene todos los profesores")
+    @Operation(summary = "Obtener toda la lista de Profesores")
     @GetMapping
     public ResponseEntity<?> findAllProfesores(){
         Map<String, Object> mensaje = new HashMap<>();
@@ -51,7 +51,7 @@ public class ProfesorDTOController extends PersonaDTOController{
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Obtiene el profesor por id")
+    @Operation(summary = "Buscar un Profesor por su id")
     @GetMapping("/{id}")
     public ResponseEntity<?> findProfesorId(@PathVariable Integer id) {
         Map<String, Object> mensaje = new HashMap<>();
@@ -66,7 +66,7 @@ public class ProfesorDTOController extends PersonaDTOController{
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Crea un profesor")
+    @Operation(summary = "Crear un Profesor")
     @PostMapping
     public ResponseEntity<?> createProfesor(@Valid @RequestBody PersonaDTO personaDTO, BindingResult result){
         Map<String,Object> mensaje = new HashMap<>();
@@ -81,7 +81,7 @@ public class ProfesorDTOController extends PersonaDTOController{
         return ResponseEntity.status(HttpStatus.CREATED).body(mensaje);
     }
 
-    @Operation(summary = "Modifica un profesor")
+    @Operation(summary = "Actualizar datos de un Profesor por su id")
     @PutMapping("/{id}")
     public ResponseEntity<?> updateProfesor(@PathVariable Integer id,
                                             @Valid @RequestBody ProfesorDTO profesorDTO, BindingResult result){
@@ -114,7 +114,7 @@ public class ProfesorDTOController extends PersonaDTOController{
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Borra un profesor por id ")
+    @Operation(summary = "Eliminar un Profesor por su id")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteProfesorId(@PathVariable Integer id){
         Map<String,Object> mensaje = new HashMap<>();
@@ -130,7 +130,7 @@ public class ProfesorDTOController extends PersonaDTOController{
         return ResponseEntity.status(HttpStatus.OK).body(mensaje);
     }
 
-    @Operation(summary = "Encuentra un profesor por nombre y apellido")
+    @Operation(summary = "Burcar una Profesor por su Nombre y Apellido")
     @GetMapping("/nombre-apellido/{nombre}/{apellido}")
     public ResponseEntity<?> findProfesorNombreApellido(
             @PathVariable String nombre, @PathVariable String apellido){
@@ -147,7 +147,7 @@ public class ProfesorDTOController extends PersonaDTOController{
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Encuentra un profesor por DNI")
+    @Operation(summary = "Burcar una Profesor por su DNI")
     @GetMapping("/profesor-dni")
     public ResponseEntity<Map<String, Object>> findProfesorDni(@RequestParam String dni){
         Map<String,Object> mensaje = new HashMap<>();
@@ -162,7 +162,7 @@ public class ProfesorDTOController extends PersonaDTOController{
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Encontrar todos los profesores de una carrera")
+    @Operation(summary = "Burcar una Profesor por su Carrera a impartir")
     @GetMapping("/profesores-carreras")
     public ResponseEntity<?> findProfesoresCarrera(@RequestBody String carrera){
 
@@ -182,7 +182,7 @@ public class ProfesorDTOController extends PersonaDTOController{
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Asigna una carrera a profesor")
+    @Operation(summary = "Asignar Profesor a una una Carrera a impartir")
     @PutMapping("/{idProfesor}/carrera/{idCarrera}")
     public ResponseEntity<?> assignCarreraProfesor(@PathVariable Integer idProfesor, @PathVariable Integer idCarrera){
 

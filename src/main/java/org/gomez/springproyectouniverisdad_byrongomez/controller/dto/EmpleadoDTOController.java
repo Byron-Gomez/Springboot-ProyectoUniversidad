@@ -40,7 +40,7 @@ public class EmpleadoDTOController extends PersonaDTOController{
         super(service, "empleado", empleadoMapper);
     }
 
-    @Operation(summary = "Obtiene todos los empleados")
+    @Operation(summary = "Obtener toda la lista de Empleados")
     @GetMapping
     public ResponseEntity<?> findAllEmpleados(){
         Map<String, Object> mensaje = new HashMap<>();
@@ -50,7 +50,7 @@ public class EmpleadoDTOController extends PersonaDTOController{
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Obtiene el empleado por id")
+    @Operation(summary = "Buscar el Empleado por su id")
     @GetMapping("/{id}")
     public ResponseEntity<?> findEmpleadoId(@PathVariable Integer id) {
         Map<String, Object> mensaje = new HashMap<>();
@@ -65,7 +65,7 @@ public class EmpleadoDTOController extends PersonaDTOController{
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Crea un empeado")
+    @Operation(summary = "Crear un Empleado")
     @PostMapping
     public ResponseEntity<?> createEmpleado(@Valid @RequestBody PersonaDTO personaDTO, BindingResult result){
         Map<String,Object> mensaje = new HashMap<>();
@@ -81,7 +81,7 @@ public class EmpleadoDTOController extends PersonaDTOController{
         return ResponseEntity.status(HttpStatus.CREATED).body(mensaje);
     }
 
-    @Operation(summary = "Modifica un empleado")
+    @Operation(summary = "Actualizar datos de un Empleado por su id")
     @PutMapping("/{id}")
     public ResponseEntity<?> updateEmpleado(@PathVariable Integer id,
                                             @Valid @RequestBody EmpleadoDTO empleadoDTO, BindingResult result){
@@ -116,7 +116,7 @@ public class EmpleadoDTOController extends PersonaDTOController{
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Borra un empleado ")
+    @Operation(summary = "Eliminar un Empleado por su id")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteEmpleadoId(@PathVariable Integer id){
 
@@ -135,7 +135,7 @@ public class EmpleadoDTOController extends PersonaDTOController{
         return ResponseEntity.status(HttpStatus.OK).body(mensaje);
     }
 
-    @Operation(summary = "Encuentra un empleado por nombre y apellido")
+    @Operation(summary = "Buscar Empleado por el Nombre y Apellido")
     @GetMapping("/nombre-apellido/{nombre}/{apellido}")
     public ResponseEntity<?> findEmpleadoNombreApellido(@PathVariable String nombre, @PathVariable String apellido){
 
@@ -152,7 +152,7 @@ public class EmpleadoDTOController extends PersonaDTOController{
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Encuentra un empleado por DNI")
+    @Operation(summary = "Buscar Empleado por el DNI")
     @GetMapping("/empleado-dni")
     public ResponseEntity<Map<String, Object>> findAlumnoDni(@RequestParam String dni){
 
@@ -169,7 +169,7 @@ public class EmpleadoDTOController extends PersonaDTOController{
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Encuentra todos los empleados por tipo")
+    @Operation(summary = "Buscar Empleado por el Tipo de Empleado 'Administratrivo-Mantenimiento'")
     @GetMapping("/tipo-empleado")
     public ResponseEntity<?> findEmpleadosTipoEmpleado(@RequestBody TipoEmpleado tipoEmpleado){
 

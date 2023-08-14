@@ -1,5 +1,6 @@
 package org.gomez.springproyectouniverisdad_byrongomez.controller.dto;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.gomez.springproyectouniverisdad_byrongomez.model.dto.PersonaDTO;
 import org.gomez.springproyectouniverisdad_byrongomez.model.entity.Alumno;
 import org.gomez.springproyectouniverisdad_byrongomez.model.entity.Empleado;
@@ -35,6 +36,7 @@ public class PersonaDTOController extends GenericDTOController<Persona, PersonaD
         this.profesorMapper = profesorMapper;
     }
 
+    @Operation(summary = "Obtener toda la lista de Personas")
     public List<PersonaDTO> findAllPersonas(){
 
         List<Persona> personas = super.findAll();
@@ -53,6 +55,7 @@ public class PersonaDTOController extends GenericDTOController<Persona, PersonaD
         return dtos;
     }
 
+    @Operation(summary = "Obtener una Persona por su id")
     public PersonaDTO findPersonaId(Integer id){
 
         Optional<Persona>optionalPersona = super.findId(id);
@@ -76,6 +79,7 @@ public class PersonaDTOController extends GenericDTOController<Persona, PersonaD
         return dto;
     }
 
+    @Operation(summary = "Crear un Pabellon")
     public PersonaDTO createPersona(Persona persona){
 
         Persona personaEntidad = super.createEntidad(persona);
@@ -93,10 +97,12 @@ public class PersonaDTOController extends GenericDTOController<Persona, PersonaD
         return dto;
     }
 
+    @Operation(summary = "Eliminar una Persona por su id")
     public void deletePersonaId(Integer id){
         super.deleteById(id);
     }
 
+    @Operation(summary = "Burcar una Persona por su DNI")
     public PersonaDTO findPersonaNombreApellido( String nombre,String apellido){
 
         Optional<Persona>optionalPersona =service.findNameLastName(nombre,apellido);
@@ -122,6 +128,7 @@ public class PersonaDTOController extends GenericDTOController<Persona, PersonaD
         return dto;
     }
 
+    @Operation(summary = "Buscar una Persona por DNI")
     public PersonaDTO findPersonaDni(String dni){
 
         Optional<Persona>optionalPersona =service.findDni(dni);

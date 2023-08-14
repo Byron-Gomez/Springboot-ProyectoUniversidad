@@ -20,8 +20,8 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI springShopOpenAPI() {
         return new OpenAPI()
-                .info(new Info().title("Universidad")
-                        .description("Registros de universidad")
+                .info(new Info().title("Proyecto Universidad")
+                        .description("Crud de universidad hecho con java springboot y swagger")
                         .version("v2")
                         .license(new License().name("Byron Gomez").url(""))
                         .contact(new Contact()

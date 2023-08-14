@@ -43,11 +43,7 @@ public class AulaDTOController extends  GenericDTOController<Aula,AulaDAO>{
         this.pabellonDAO = pabellonDAO;
     }
 
-    @Operation(summary = "Obtiene todas las aulas de la lista")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "todos los registros de alumnos",
-                    content = @Content(array = @ArraySchema(schema = @Schema(implementation = Alumno.class)))),
-    })
+    @Operation(summary = "Obtener toda la lista de Aulas")
     @GetMapping
     public ResponseEntity<?> findAllAulas(){
         Map<String, Object> mensaje = new HashMap<>();
@@ -61,13 +57,7 @@ public class AulaDTOController extends  GenericDTOController<Aula,AulaDAO>{
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Obtiene el aula por id")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "aula obtenida",
-                    content = @Content(array = @ArraySchema(schema = @Schema(implementation = Alumno.class)))),
-            @ApiResponse(responseCode = "400", description = "No existe aula con ese id",
-                    content = @Content(array = @ArraySchema(schema = @Schema(implementation = Alumno.class)))),
-    })
+    @Operation(summary = "Buscar el Aula por su id")
     @GetMapping("/{id}")
     public ResponseEntity<?> findAulaId(@PathVariable Integer id) {
 
@@ -90,13 +80,7 @@ public class AulaDTOController extends  GenericDTOController<Aula,AulaDAO>{
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Crea una aula")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "se creo el aula ",
-                    content = @Content(array = @ArraySchema(schema = @Schema(implementation = Aula.class)))),
-            @ApiResponse(responseCode = "422", description = "No creo el aula",
-                    content = @Content(array = @ArraySchema(schema = @Schema(implementation = Aula.class)))),
-    })
+    @Operation(summary = "Crear un Aula")
     @PostMapping
         public ResponseEntity<?> createAula(@Valid @RequestBody AulaDTO aulaDTO, BindingResult result){
 
@@ -115,7 +99,7 @@ public class AulaDTOController extends  GenericDTOController<Aula,AulaDAO>{
         return ResponseEntity.status(HttpStatus.CREATED).body(mensaje);
     }
 
-    @Operation(summary = "Modificar un aula por id")
+    @Operation(summary = "Actualizar datos de un Aula por su id")
     @PutMapping("/{id}")
     public ResponseEntity<?> updateAula(@PathVariable Integer id,
                                               @Valid @RequestBody AulaDTO aulaDTO,BindingResult result){
@@ -150,7 +134,7 @@ public class AulaDTOController extends  GenericDTOController<Aula,AulaDAO>{
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Borrar una aula por id")
+    @Operation(summary = "Eliminar un Aula por su id")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteAulaId(@PathVariable Integer id){
 
@@ -169,7 +153,7 @@ public class AulaDTOController extends  GenericDTOController<Aula,AulaDAO>{
         return ResponseEntity.status(HttpStatus.OK).body(mensaje);
     }
 
-    @Operation(summary = "Encuentrar aulas por pizarron")
+    @Operation(summary = "Buscar Aulas por Su tipo de Pizzaron ' PIZARRA_TIZA,PIZARRA_ACRILICO '")
     @PostMapping("/aulas-pizarras")
     public  ResponseEntity<?>findAulasByPizarron(@Valid @RequestBody Pizarron pizarron,BindingResult result){
         Map<String,Object> mensaje = new HashMap<>();
@@ -194,7 +178,7 @@ public class AulaDTOController extends  GenericDTOController<Aula,AulaDAO>{
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Encuentrar aulas por pabellon")
+    @Operation(summary = "Buscar Aulas por el nombre de su Pabellon")
     @PostMapping("/aulas-pabellon")
     public ResponseEntity<?> findAulasByPabellonNombre(@RequestBody String nombre){
         Map<String,Object> mensaje = new HashMap<>();
@@ -212,7 +196,7 @@ public class AulaDTOController extends  GenericDTOController<Aula,AulaDAO>{
         mensaje.put("data",dtos);
         return ResponseEntity.ok().body(mensaje);
     }
-    @Operation(summary = "Encuentra aulas por numero de Aula")
+    @Operation(summary = "Buscar Aula por el numero de su Aula")
     @GetMapping("/nroaulas/{nroAula}")
     public ResponseEntity<?> findAulaByNroAula(@PathVariable Integer nroAula){
         Map<String,Object> mensaje = new HashMap<>();
@@ -234,7 +218,7 @@ public class AulaDTOController extends  GenericDTOController<Aula,AulaDAO>{
         return ResponseEntity.ok().body(mensaje);
     }
 
-    @Operation(summary = "Asigna aula a un pabellon")
+    @Operation(summary = "Asignar un Pabellon a un Aula")
     @PutMapping("/{idAula}/pabellon/{idPabellon}")
     public ResponseEntity<?> assignPabellonAula(@PathVariable Integer idAula, @PathVariable Integer idPabellon){
 
